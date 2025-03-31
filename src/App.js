@@ -1,10 +1,14 @@
 import React from "react";
+import Footer from "./Components/Footer/Footer";
+import Header from "./Components/Header/Header";
 
 function App() {
   return (
-    <div className="App">
-      <h1>Trabajo integrador Progra</h1>
-    </div>
+    <>
+      <Header />
+      <h1>TI Progra</h1>
+      <Footer />
+    </>
   );
 }
 
