@@ -67,15 +67,17 @@ nav ul {
 .logo-titulo {
     display: flex;
     align-items: center;
+    justify-content: space-between;
 }
 
 .logo-titulo img {
-    width: 40px;
-    margin-right: 10px;
+    width: 60px;
+    margin-right: 20px;
+    bottom: auto;
 }
 
 .logo-titulo h1 {
     margin: 0;
-    font-size: 22px;
+    font-size: 30px;
     font-weight: bold;
 }

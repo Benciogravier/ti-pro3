@@ -14,11 +14,11 @@ function Header() {
     },
     {
       name: "Populares",
-      path: '/populares'
+      path: '/todas'
     },
     {
       name: "Cartelera",
-      path: '/cartelera'
+      path: '/todas'
     },
     {
       name: "Ver todas",
@@ -29,7 +29,7 @@ function Header() {
     <React.Fragment>
       <nav>
         <div className='logo-titulo'>
-          <img class="logo" src="./img/FALTA" alt="logo"/>
+          <img class="logo" src="./img/logo.jpg" alt="logo"/>
           <h1>Cuevana 4</h1>
         </div>
         <ul className='main-nav'>
