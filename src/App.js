@@ -1,12 +1,13 @@
 import React from "react";
 import Footer from "./componentes/Footer/Footer";
 import Header from "./componentes/Header/Header";
+import Populares from "./componentes/Populares/Populares";
 
 function App() {
   return (
     <>
       <Header />
-      <h1>TI Progra</h1>
+      <Populares />
       <Footer />
     </>
   );
