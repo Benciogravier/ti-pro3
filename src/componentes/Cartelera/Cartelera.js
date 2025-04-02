@@ -1,17 +1,17 @@
 import React from "react";
 
-function Populares() {
+function Cartelera() {
     const peliculasPop = [
         {
             
         }
     ]
     return(
-        <h2>Peliculas mas populares</h2>
+        <h2>Peliculas en Cartelera</h2>
 
     )
 }
 
-export default Populares;
+export default Cartelera;
 
 

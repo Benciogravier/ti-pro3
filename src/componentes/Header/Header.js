@@ -1,5 +1,5 @@
 import React from 'react';
-import './header.css';
+import './styles.css';
 import NavegacionMenu from './NavegacionMenu';
 
 function Header() {
