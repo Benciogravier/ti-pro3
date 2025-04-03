@@ -9,20 +9,20 @@ function Header() {
       path: '/'
     },
     {
-      name: "Favoritos",
-      path: '/favoritos'
+      name: "Favoritas",
+      path: '/favoritas'
     },
     {
       name: "Populares",
-      path: '/todas'
+      path: '/vertodas'
     },
     {
       name: "Cartelera",
-      path: '/todas'
+      path: '/vertodas'
     },
     {
       name: "Ver todas",
-      path: '/todas'
+      path: '/vertodas'
     }
   ]
   return (
