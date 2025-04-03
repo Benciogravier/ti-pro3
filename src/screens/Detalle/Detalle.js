@@ -1,9 +1,10 @@
 import React from "react";
 
-function Detalle(){
+function Detalle(props){
+    const idPelicula = props.match.params.id
     return(
         <div>
-            <h1>Detalle de la película</h1>
+            <h1>Detalle de la película {idPelicula}</h1>
         </div>
     )
 }

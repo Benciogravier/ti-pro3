@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 
 function NavegacionMenu(props) {
     return(
-
         <li>
             <Link to={props.data.path}>
                 {props.data.name}
