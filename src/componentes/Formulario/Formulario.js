@@ -3,7 +3,7 @@ import './styles.css'
 
 function Formulario() {
   return (
-    <seccion>
+    <section>
     <main>
         <h3 className="titulo-form">Busca tu pelicula:</h3>
     </main>
@@ -11,7 +11,7 @@ function Formulario() {
       <input type="text" placeholder="Buscar película..." />
       <button type="submit">Buscar</button>
     </form>
-    </seccion>
+    </section>
   )
 }
 

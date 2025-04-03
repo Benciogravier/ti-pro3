@@ -1,0 +1,36 @@
+.section-pop-peli{
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 20px;
+    padding: 20px;
+}
+
+.peli-pop-card{
+    background-color: #f7f7f7;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 10px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.section-pop-peli h3 {
+    font-size: 16px;
+    margin: 10px 0;
+    margin-top: 10px;
+    background-color: #2b50aa;;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    text-align: center;
+
+}
+
+.img-pop-peli{
+    width: 100%;
+    height: 150px;
+    object-fit: contain;
+    margin-bottom: 10px;
+}
