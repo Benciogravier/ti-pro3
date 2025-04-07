@@ -2,12 +2,12 @@ import React from "react";
 import {Switch, Route} from "react-router-dom"
 import Footer from "./componentes/Footer/Footer";
 import Header from "./componentes/Header/Header";
-import Home from "./screens/Home/Home";
-import NotFound from "./screens/NotFound/NotFound";
-import Detalle from "./screens/Detalle/Detalle";
-import VerTodas from "./screens/VerTodas/VerTodas";
-import Favoritas from "./screens/Favoritas/Favoritas";
-import Busqueda from "./screens/Busqueda/Busqueda";
+import Home from "./Screens/Home/Home";
+import NotFound from "./Screens/NotFound/NotFound";
+import Detalle from "./Screens/Detalle/Detalle";
+import VerTodas from "./Screens/VerTodas/VerTodas";
+import Favoritas from "./Screens/Favoritas/Favoritas";
+import Busqueda from "./Screens/Busqueda/Busqueda";
 
 
 function App() {
