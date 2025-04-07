@@ -18,11 +18,11 @@ function Header() {
     },
     {
       name: "Cartelera",
-      path: '/vertodas'
+      path: '/cartelera'
     },
     {
       name: "Ver todas",
-      path: '/vertodas'
+      path: '/'
     }
   ]
   return (

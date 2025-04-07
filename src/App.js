@@ -5,7 +5,7 @@ import Header from "./componentes/Header/Header";
 import Home from "./Screens/Home/Home";
 import NotFound from "./Screens/NotFound/NotFound";
 import Detalle from "./Screens/Detalle/Detalle";
-import VerTodas from "./Screens/VerTodas/VerTodas";
+import EnCartel from "./Screens/EnCartel/EnCartel";
 import Favoritas from "./Screens/Favoritas/Favoritas";
 import Busqueda from "./Screens/Busqueda/Busqueda";
 
@@ -17,7 +17,7 @@ function App() {
       <Switch>
         <Route path={"/"} exact={true} component={Home}/>
         <Route path={"/detalle/:id"} component={Detalle}/>
-        <Route path={"/vertodas"} component={VerTodas}/>
+        <Route path={"/cartelera"} component={EnCartel}/>
         <Route path={"/favoritas"} component={Favoritas}/>
         <Route path={"/busqueda"} component={Busqueda}/>
         <Route path={""} component={NotFound}/>
