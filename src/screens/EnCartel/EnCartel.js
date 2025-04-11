@@ -1,4 +1,5 @@
 import React,{Component} from "react";
+import Pelicula from "../../componentes/Pelicula/Pelicula";
 
 class EnCartel extends Component{
     constructor(props){
@@ -17,15 +18,28 @@ class EnCartel extends Component{
             }
           };
         fetch('https://api.themoviedb.org/3/movie/now_playing?language=en-US&page=1', options)
-            .then(results => results.json())
-            .then(data => this.setState({peliculas: data.results, backupPeliculas: data.results})) //CHEQUEAR LO DE BACKUP
-            .catch(err => console.error(err));
+            .then((results) => results.json())
+            .then((data) => this.setState({
+                peliculas: data.results,
+                backupPeliculas: data.results
+            }))
+            .catch((err) => console.error(err));
     }
     render(){
         return(
-            <div>
+            <>
                 <h1>Peliculas en los Cines</h1>
-            </div>
+                {
+                    this.state.peliculas.length === 0 ? (
+                        <h2>Cargando las peliculas en cartelera</h2>
+                    ) : null
+                }
+                <div className="section-cart-peli">
+                    {
+                        this.state.peliculas.map((elm,idx) => <Pelicula key={`${idx} - ${elm.name}`} data={elm}/>)
+                    }
+                </div>
+            </>
         )
     }
    
