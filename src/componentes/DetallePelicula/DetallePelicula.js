@@ -12,7 +12,8 @@ class DetallePelicula extends Component {
     }
     render() {
         const pelicula = this.props.data;
-
+       
+    
         return(
             <article className="detalle-peli">
                 <img src={`https://image.tmdb.org/t/p/w500 ${pelicula.poster_path}`} alt={pelicula.title} />
