@@ -6,6 +6,7 @@ import Home from "./Screens/Home/Home";
 import NotFound from "./Screens/NotFound/NotFound";
 import Detalle from "./Screens/Detalle/Detalle";
 import EnCartel from "./Screens/EnCartel/EnCartel";
+import MasPopulares from "./Screens/MasPopulares/MasPopulares";
 import Favoritas from "./Screens/Favoritas/Favoritas";
 import Busqueda from "./Screens/Busqueda/Busqueda";
 
@@ -18,6 +19,7 @@ function App() {
         <Route path={"/"} exact={true} component={Home}/>
         <Route path={"/detalle/:id"} component={Detalle}/>
         <Route path={"/cartelera"} component={EnCartel}/>
+        <Route path={"/populares"} component={MasPopulares}/>
         <Route path={"/favoritas"} component={Favoritas}/>
         <Route path={"/busqueda"} component={Busqueda}/>
         <Route path={""} component={NotFound}/>
