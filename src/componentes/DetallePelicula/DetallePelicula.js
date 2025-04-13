@@ -24,9 +24,11 @@ class DetallePelicula extends Component {
                 {this.state.favorito === false ? (
                     <button onClick={()=> this.alternarFavorito()}>Agregar a Favoritos</button>
                 ): (
-                    <button onClick={()=> this.alternarFavorito()}>Quitar de Favoritos</button>
+                    <button onClick={()=> this.alternarFavorito()}>Quitar de Favoritos </button>
                 )}
             </article>
+            
+       
         )
     }
 }
