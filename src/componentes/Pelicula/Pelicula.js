@@ -26,7 +26,7 @@ class Pelicula extends Component{
     render() {
         return(
             <div className="pelicula-cart-card">
-                <img className="img-cart-peli" src={`${this.state.data.poster_path}`} alt={this.state.data.title}/>
+                <img className="img-cart-peli" src={`https://image.tmdb.org/t/p/w500${this.state.data.poster_path}`} alt={this.state.data.title}/>
                 <h3>{this.state.data.title}</h3>
                 {
                     this.state.mostrarContenido === true ? (
