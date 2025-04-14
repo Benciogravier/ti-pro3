@@ -26,10 +26,12 @@ class EnCartel extends Component{
             .catch((err) => console.error(err));
     }
     filtrarPeliculas(busqueda){ // filtramos todo lo que pone el usuario 
+        console.log('busqueda', busqueda)
         const peliculasFiltradas = this.state.backupPeliculas.filter(
             (elm)=> elm.title.toLowerCase().includes(busqueda.toLowerCase())
         )
-        this.setState({peliculas: peliculasFiltradas})
+        this.setState({peliculas: peliculasFiltradas}, ()=> console.log('this.state', this.state.peliculas))
+        console.log(this.state.peliculas)
     }
     render(){
         return(
@@ -45,7 +47,7 @@ class EnCartel extends Component{
                 }
                 <div className="section-cart-peli">
                     {
-                        this.state.peliculas.map((elm,idx) => <Pelicula key={`${idx} - ${elm.name}`} data={elm}/>)
+                        this.state.peliculas.map((elm,idx) => <Pelicula key={`${idx} - ${elm.title}`} data={elm}/>)
                     }
                 </div>
             </>

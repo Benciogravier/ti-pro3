@@ -32,7 +32,7 @@ class Populares extends Component{
             <section>
                 <h2>Peliculas mas Populares</h2>
                 <div  className="section-pop-peli">
-                    {this.state.peliculas.map((elm, idx) => <Pelicula key={`${idx} - ${elm.name}`} data={elm}/>)} 
+                    {this.state.peliculas.map((elm, idx) => <Pelicula key={`${idx} - ${elm.title}`} data={elm}/>)} 
                 </div>
             </section>
         )

@@ -17,6 +17,8 @@ class FiltroForm extends Component{
       {valorInput: evento.target.value},
       ()=> this.props.filtro(this.state.valorInput)
     )
+    console.log(this.state.valorInput);
+    
   }
   render(){
     return (
