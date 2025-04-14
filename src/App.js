@@ -7,8 +7,9 @@ import NotFound from "./Screens/NotFound/NotFound";
 import Detalle from "./Screens/Detalle/Detalle";
 import EnCartel from "./Screens/EnCartel/EnCartel";
 import MasPopulares from "./Screens/MasPopulares/MasPopulares";
-import Favoritas from "./Screens/Favoritas/Favoritas";
 import Busqueda from "./Screens/Busqueda/Busqueda";
+import Favoritas from "./Screens/Favoritas/Favoritas";
+import Resultados from "./Screens/Resultados/Resultados";
 
 
 function App() {
@@ -22,12 +23,13 @@ function App() {
         <Route path={"/populares"} component={MasPopulares} />
         <Route path={"/favoritas"} component={Favoritas}/>
         <Route path={"/busqueda"} component={Busqueda}/>
+        <Route path={'/resultados/:busqueda'} component={Resultados} />
         <Route path={""} component={NotFound}/>
       </Switch>
       <Footer />
     </>
     
   );
-}//busqueda es un query
+}
 
 export default App;

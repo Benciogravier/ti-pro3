@@ -1,16 +1,15 @@
 import React, {Component} from "react";
-import './styles.css'
-import Pelicula from "../Pelicula/Pelicula";
-import {Link} from 'react-router-dom'
+import Pelicula from "../../componentes/Pelicula/Pelicula";
 
-class Populares extends Component{
+class Resultados extends Component{
     constructor(props){
         super(props)
         this.state={
-            peliculas: [],
-            backupPeliculas: []
+            busqueda: props.match.params.busqueda,
+            resultados: []
         }
     }
+
     componentDidMount(){
         const options = {
             method: 'GET',
@@ -19,34 +18,27 @@ class Populares extends Component{
               Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI4N2RlMGQwZjJjMmEyNDBkZjc0NmQxYmQ3MGMxYzg0NiIsIm5iZiI6MTc0MzUzMTIyNC4yMDk5OTk4LCJzdWIiOiI2N2VjMmNkODE5ZjFiMWNiNGVmYTBiNjMiLCJzY29wZXMiOlsiYXBpX3JlYWQiXSwidmVyc2lvbiI6MX0.mzcXwSEblhmvnWTV6blXwTJFlggcgIwLklQqYTZPseA'
             }
           };
-        fetch('https://api.themoviedb.org/3/movie/popular?language=en-US&page=1', options)
+          
+          fetch(`https://api.themoviedb.org/3/search/movie?query=${this.state.busqueda}&include_adult=false&language=en-US&page=1`, options)
             .then((results) => results.json())
             .then((data) => this.setState({
-                peliculas: data.results.slice(15),
-                backupPeliculas: data.results.slice(15)
+                resultados: data.results
             }))
             .catch((err) => console.error(err));
     }
 
     render(){
         return(
-            <section>
-                <h2>Peliculas mas Populares</h2>
-                <div  className="section-pop-peli">
-                    {this.state.peliculas.map((elm, idx) => <Pelicula key={`${idx} - ${elm.title}`} data={elm}/>)} 
+            <>
+                Resultados de: {this.state.busqueda}
+                <div className="section-cart-peli">
+                    {
+                        this.state.resultados.map((elm,idx) => <Pelicula key={`${idx} - ${elm.title}`} data={elm}/>)
+                    }
                 </div>
-                <Link to={'/populares'}>
-                    <button>Ver mas</button>    
-                </Link>
-            </section>
+            </>
         )
     }
-
 }
 
-
-
-
-export default Populares;
-
-
+export default Resultados;

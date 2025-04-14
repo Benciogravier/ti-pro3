@@ -21,8 +21,8 @@ function Header() {
       path: '/cartelera'
     },
     {
-      name: "Ver todas",
-      path: '/'
+      name: "Busqueda",
+      path: '/busqueda'
     }
   ]
   return (
