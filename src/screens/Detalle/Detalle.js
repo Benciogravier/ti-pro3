@@ -23,7 +23,7 @@ class Detalle extends Component {
       let storage = localStorage.getItem("favoritos")
       if (storage != null) {
           let storageParseado = JSON.parse(storage)
-          let estaMiId = storageParseado.includes(this.state.id)
+          let estaMiId = storageParseado.includes(Number(this.state.id))
           if (estaMiId) {
               this.setState ({favorito : true})
           }
@@ -80,9 +80,9 @@ class Detalle extends Component {
                     <p><h3>Duración:</h3> {this.state.pelicula.runtime} minutos</p>
                     <p><h3>Sinopsis:</h3> {this.state.pelicula.overview}</p>
                     {this.state.favorito === false ? (
-                        <button onClick={()=> this.agregarFavorita(this.state.id)}>Agregar a Favoritos</button>
+                        <button onClick={()=> this.agregarFavorita(this.state.pelicula.id)}>Agregar a Favoritos</button>
                     ): (
-                        <button onClick={()=> this.sacarDeFavorita(this.state.id)}>Quitar de Favoritos </button>
+                        <button onClick={()=> this.sacarDeFavorita(this.state.pelicula.id)}>Quitar de Favoritos </button>
                     )}
                 </article>
                 )}

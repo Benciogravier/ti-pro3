@@ -13,7 +13,7 @@ class Pelicula extends Component{
 
     componentDidMount(){
         let storage = localStorage.getItem("favoritos")
-        if (storage != null) {
+        if (storage !== null) {
             let storageParseado = JSON.parse(storage)
             let estaMiId = storageParseado.includes(this.state.data.id)
             if (estaMiId) {
