@@ -14,7 +14,7 @@ function Header() {
     },
     {
       name: "Populares",
-      path: '/vertodas'
+      path: '/populares'
     },
     {
       name: "Cartelera",
