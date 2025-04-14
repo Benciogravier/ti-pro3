@@ -6,9 +6,9 @@ import Home from "./Screens/Home/Home";
 import NotFound from "./Screens/NotFound/NotFound";
 import Detalle from "./Screens/Detalle/Detalle";
 import EnCartel from "./Screens/EnCartel/EnCartel";
+import MasPopulares from "./Screens/MasPopulares/MasPopulares";
 import Favoritas from "./Screens/Favoritas/Favoritas";
 import Busqueda from "./Screens/Busqueda/Busqueda";
-import MasPopulares from "./Screens/MasPopulares/MasPopulares";
 
 
 function App() {

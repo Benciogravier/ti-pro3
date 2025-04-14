@@ -15,7 +15,6 @@ class Detalle extends Component {
     }
   
     componentDidMount() {
-
       const options = {
         method: 'GET',
         headers: {
@@ -35,7 +34,7 @@ class Detalle extends Component {
             <section>
                 <h1>Detalle de la Pelicula</h1>
                 {this.state.pelicula === null ? (
-                    <h2>Cargando los datos...</h2>
+                    <h2>Cargando película...</h2>
                 ):(
                     <article className="detalle-peli">
                     <img className="img-cart-peli" src={`https://image.tmdb.org/t/p/w500${this.state.pelicula.poster_path}`} alt={this.state.pelicula.title}/>

@@ -9,7 +9,6 @@ class MasPopulares extends Component{
             backupPeliculas: []
         }
     }
-
     componentDidMount(){
         const options = {
             method: 'GET',
