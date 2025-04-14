@@ -1,6 +1,7 @@
 import React, {Component} from "react";
 import './styles.css'
 import Pelicula from "../Pelicula/Pelicula";
+import {Link} from 'react-router-dom'
 
 class Populares extends Component{
     constructor(props){
@@ -32,8 +33,11 @@ class Populares extends Component{
             <section>
                 <h2>Peliculas mas Populares</h2>
                 <div  className="section-pop-peli">
-                    {this.state.peliculas.map((elm, idx) => <Pelicula key={`${idx} - ${elm.name}`} data={elm}/>)} 
+                    {this.state.peliculas.map((elm, idx) => <Pelicula key={`${idx} - ${elm.title}`} data={elm}/>)} 
                 </div>
+                <Link to={'/populares'}>
+                <button>Ver mas</button>    
+                </Link>
             </section>
         )
     }

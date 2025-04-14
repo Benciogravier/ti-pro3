@@ -46,7 +46,7 @@ class MasPopulares extends Component{
                 }
                 <div className="section-pop-peli">
                     {
-                        this.state.peliculas.map((elm,idx) => <Pelicula key={`${idx} - ${elm.name}`} data={elm}/>)
+                        this.state.peliculas.map((elm,idx) => <Pelicula key={`${idx} - ${elm.title}`} data={elm}/>)
                     }
                 </div>
             </>

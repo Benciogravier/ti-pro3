@@ -1,14 +1,14 @@
 import React, { Component } from "react";
 import './styles.css'
 import Pelicula from "../Pelicula/Pelicula";
+import {Link} from 'react-router-dom'
 
 
 class Cartelera extends Component{
     constructor(props){
         super(props)
         this.state={
-            peliculas: [],
-            backupPeliculas: []
+            peliculas: []
         }
     }
     componentDidMount(){
@@ -21,19 +21,24 @@ class Cartelera extends Component{
           };
         fetch('https://api.themoviedb.org/3/movie/now_playing?language=en-US&page=1', options)
             .then((results) => results.json())
-            .then((data) => this.setState({
-                peliculas: data.results.slice(15),
-                backupPeliculas: data.results.slice(15)
-            }))
+            .then((data) => {
+                console.log("data", data)
+                this.setState({
+                peliculas: data.results.slice(15)
+            })})
             .catch((err) => console.error(err));
     }
+ 
     render(){
         return(
             <section>
                 <h2>Cartelera</h2>
                 <div  className="section-cart-peli">
-                    {this.state.peliculas.map((elm,idx) => <Pelicula key={`${idx} - ${elm.name}`} data={elm}/>)}
+                    {this.state.peliculas.map((elm,idx) => <Pelicula key={`${idx} - ${elm.title}`} data={elm}/>)}
                 </div>
+            <Link to={'/cartelera'}>
+                <button>Ver mas</button>    
+            </Link>
             </section>
         )
     }
