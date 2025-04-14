@@ -11,15 +11,50 @@ class Pelicula extends Component{
         }
     }
 
+    componentDidMount(){
+        let storage = localStorage.getItem("favoritos")
+        if (storage != null) {
+            let storageParseado = JSON.parse(storage)
+            let estaMiId = storageParseado.includes(this.state.data.id)
+            if (estaMiId) {
+                this.setState ({favorito : true})
+            }
+        }
+    }
+
+    agregarFavorita(id){
+        let storage = localStorage.getItem('favoritos')
+        if(storage !== null){
+          let arrParseado = JSON.parse(storage)
+          arrParseado.push(id)
+          let arrStringificado = JSON.stringify(arrParseado)
+          localStorage.setItem('favoritos', arrStringificado)
+        } else {
+          let primerID = [id]
+          let arrStringificado = JSON.stringify(primerID)
+          localStorage.setItem('favoritos', arrStringificado)
+        }
+  
+        this.setState({
+          favorito: true
+        })
+      }
+
+      sacarDeFavorita(id){
+        const storage = localStorage.getItem('favoritos')
+        const storageParseado = JSON.parse(storage)
+        const filtrarStorage = storageParseado.filter((elm) => elm !== id )
+        const storageStringificado = JSON.stringify(filtrarStorage)
+        localStorage.setItem('favoritos', storageStringificado)
+  
+        this.setState({
+          favorito: false
+        })
+      }
+
     ocultar(){
         this.setState({
             mostrarContenido: !this.state.mostrarContenido
-        })
-    }
-
-    agregarFav(){
-        this.setState({
-            favorito: !this.state.favorito
         })
     }
 
@@ -49,12 +84,12 @@ class Pelicula extends Component{
 
                 {
                     this.state.favorito === false ? (
-                        <button onClick={() => this.agregarFav()}>Agregar a favoritos</button>
+                        <button onClick={() => this.agregarFavorita(this.state.data.id)}>Agregar a favoritos</button>
                     ) : null
                 }
                 {
                     this.state.favorito === true ? (
-                        <button onClick={() => this.agregarFav()}>Quitar de favoritos</button>
+                        <button onClick={() => this.sacarDeFavorita(this.state.data.id)}>Quitar de favoritos</button>
                     ) : null
                 }
 
