@@ -10,9 +10,6 @@ class Detalle extends Component {
       };
     }
 
-    alternarFavorito() {
-        this.setState({ favorito: !this.state.favorito});
-    }
   
     componentDidMount() {
       const options = {
@@ -22,11 +19,50 @@ class Detalle extends Component {
           Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI4N2RlMGQwZjJjMmEyNDBkZjc0NmQxYmQ3MGMxYzg0NiIsIm5iZiI6MTc0MzUzMTIyNC4yMDk5OTk4LCJzdWIiOiI2N2VjMmNkODE5ZjFiMWNiNGVmYTBiNjMiLCJzY29wZXMiOlsiYXBpX3JlYWQiXSwidmVyc2lvbiI6MX0.mzcXwSEblhmvnWTV6blXwTJFlggcgIwLklQqYTZPseA'
         }
       };
+
+      let storage = localStorage.getItem("favoritos")
+      if (storage != null) {
+          let storageParseado = JSON.parse(storage)
+          let estaMiId = storageParseado.includes(this.state.id)
+          if (estaMiId) {
+              this.setState ({favorito : true})
+          }
+      }
       
       fetch(`https://api.themoviedb.org/3/movie/${this.state.id}?language=en-US`, options)
         .then((results) => results.json())
         .then((data) => this.setState({pelicula: data}))
         .catch((err) => console.error(err))
+    }
+
+    agregarFavorita(id){
+      let storage = localStorage.getItem('favoritos')
+      if(storage !== null){
+        let arrParseado = JSON.parse(storage)
+        arrParseado.push(id)
+        let arrStringificado = JSON.stringify(arrParseado)
+        localStorage.setItem('favoritos', arrStringificado)
+      } else {
+        let primerID = [id]
+        let arrStringificado = JSON.stringify(primerID)
+        localStorage.setItem('favoritos', arrStringificado)
+      }
+
+      this.setState({
+        favorito: true
+      })
+    }
+
+    sacarDeFavorita(id){
+      const storage = localStorage.getItem('favoritos')
+      const storageParseado = JSON.parse(storage)
+      const filtrarStorage = storageParseado.filter((elm) => elm !== id )
+      const storageStringificado = JSON.stringify(filtrarStorage)
+      localStorage.setItem('favoritos', storageStringificado)
+
+      this.setState({
+        favorito: false
+      })
     }
 
     render(){
@@ -44,9 +80,9 @@ class Detalle extends Component {
                     <p><h3>Duración:</h3> {this.state.pelicula.runtime} minutos</p>
                     <p><h3>Sinopsis:</h3> {this.state.pelicula.overview}</p>
                     {this.state.favorito === false ? (
-                        <button onClick={()=> this.alternarFavorito()}>Agregar a Favoritos</button>
+                        <button onClick={()=> this.agregarFavorita(this.state.id)}>Agregar a Favoritos</button>
                     ): (
-                        <button onClick={()=> this.alternarFavorito()}>Quitar de Favoritos </button>
+                        <button onClick={()=> this.sacarDeFavorita(this.state.id)}>Quitar de Favoritos </button>
                     )}
                 </article>
                 )}
