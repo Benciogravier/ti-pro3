@@ -1,5 +1,6 @@
 import React, {Component} from "react";
 import Pelicula from "../../componentes/Pelicula/Pelicula";
+import FiltroForm from "../../componentes/FiltroForm/FiltroForm";
 
 class MasPopulares extends Component{
     constructor(props){
@@ -26,11 +27,18 @@ class MasPopulares extends Component{
             }))
             .catch((error) => console.error(error));
     }
+    filtrarPeliculas(busqueda){ // filtramos todo lo que pone el usuario 
+        const peliculasFiltradas = this.state.backupPeliculas.filter(
+            (elm)=> elm.title.toLowerCase().includes(busqueda.toLowerCase())
+        )
+        this.setState({peliculas: peliculasFiltradas})
+    }
 
     render(){
         return(
             <>
                 <h1>Peliculas mas Populares</h1>
+                <FiltroForm filtro={(busquedaUsuario) => this.filtrarPeliculas(busquedaUsuario)}/>
                 {
                     this.state.peliculas.length === 0 ? (
                         <h2>Cargando las peliculas</h2>

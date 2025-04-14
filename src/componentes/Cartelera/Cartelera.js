@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import './styles.css'
 import Pelicula from "../Pelicula/Pelicula";
 
+
 class Cartelera extends Component{
     constructor(props){
         super(props)
@@ -26,8 +27,6 @@ class Cartelera extends Component{
             }))
             .catch((err) => console.error(err));
     }
-
-
     render(){
         return(
             <section>

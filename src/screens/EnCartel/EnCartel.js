@@ -1,6 +1,6 @@
 import React,{Component} from "react";
 import Pelicula from "../../componentes/Pelicula/Pelicula";
-
+import FiltroForm from "../../componentes/FiltroForm/FiltroForm";
 class EnCartel extends Component{
     constructor(props){
         super(props)
@@ -25,10 +25,19 @@ class EnCartel extends Component{
             }))
             .catch((err) => console.error(err));
     }
+    filtrarPeliculas(busqueda){ // filtramos todo lo que pone el usuario 
+        const peliculasFiltradas = this.state.backupPeliculas.filter(
+            (elm)=> elm.title.toLowerCase().includes(busqueda.toLowerCase())
+        )
+        this.setState({peliculas: peliculasFiltradas})
+    }
     render(){
         return(
             <>
+
                 <h1>Peliculas en los Cines</h1>
+                <FiltroForm filtro={(busquedaUsuario) => this.filtrarPeliculas(busquedaUsuario)}/>
+                   
                 {
                     this.state.peliculas.length === 0 ? (
                         <h2>Cargando las peliculas en cartelera</h2>
