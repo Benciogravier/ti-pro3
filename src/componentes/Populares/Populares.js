@@ -35,9 +35,11 @@ class Populares extends Component{
                 <div  className="section-pop-peli">
                     {this.state.peliculas.map((elm, idx) => <Pelicula key={`${idx} - ${elm.title}`} data={elm}/>)} 
                 </div>
-                <Link to={'/populares'}>
-                    <button>Ver mas</button>    
-                </Link>
+                <div className="ver-mas-container">
+                    <Link to={'/populares'}>
+                        <button>Ver mas</button>    
+                    </Link>
+                </div>
             </section>
         )
     }

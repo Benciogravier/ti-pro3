@@ -36,9 +36,11 @@ class Cartelera extends Component{
                 <div  className="section-cart-peli">
                     {this.state.peliculas.map((elm,idx) => <Pelicula key={`${idx} - ${elm.title}`} data={elm}/>)}
                 </div>
-            <Link to={'/cartelera'}>
-                <button>Ver mas</button>    
-            </Link>
+            <div className="ver-mas-container">
+                <Link to={'/cartelera'}>
+                    <button>Ver mas</button>    
+                </Link>
+            </div>
             </section>
         )
     }

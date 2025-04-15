@@ -1,4 +1,5 @@
 import React, {Component} from "react";
+import './styles.css'
 
 class Detalle extends Component {
     constructor(props) {
@@ -66,29 +67,34 @@ class Detalle extends Component {
     }
 
     render(){
-        return(
-            <section>
-                <h1>Detalle de la Pelicula</h1>
-                {this.state.pelicula === null ? (
-                    <h2>Cargando película...</h2>
-                ):(
-                    <article className="detalle-peli">
-                    <img className="img-cart-peli" src={`https://image.tmdb.org/t/p/w500${this.state.pelicula.poster_path}`} alt={this.state.pelicula.title}/>
-                    <h2>{this.state.pelicula.title}</h2>
-                    <p><h3>Rating:</h3> {this.state.pelicula.vote_average}</p>
-                    <p><h3>Fecha de estreno:</h3> {this.state.pelicula.release_date}</p>
-                    <p><h3>Duración:</h3> {this.state.pelicula.runtime} minutos</p>
-                    <p><h3>Sinopsis:</h3> {this.state.pelicula.overview}</p>
-                    {this.state.favorito === false ? (
-                        <button onClick={()=> this.agregarFavorita(this.state.pelicula.id)}>Agregar a Favoritos</button>
-                    ): (
-                        <button onClick={()=> this.sacarDeFavorita(this.state.pelicula.id)}>Quitar de Favoritos </button>
-                    )}
-                </article>
-                )}
-            </section>
-        )
-    }
+      return(
+          <section className="detalle-container">
+              <h1>Detalle de la Pelicula</h1>
+              {this.state.pelicula === null ? (
+                  <h2>Cargando película...</h2>
+              ) : (
+                  <article className="detalle-peli">
+                      <div className="detalle-img-container">
+                          <img className="img-cart-peli" src={`https://image.tmdb.org/t/p/w500${this.state.pelicula.poster_path}`} alt={this.state.pelicula.title} />
+                      </div>
+                      <div className="detalle-info">
+                          <h2>{this.state.pelicula.title}</h2>
+                          <p><strong>Rating:</strong> {this.state.pelicula.vote_average}</p>
+                          <p><strong>Fecha de estreno:</strong> {this.state.pelicula.release_date}</p>
+                          <p><strong>Duración:</strong> {this.state.pelicula.runtime} minutos</p>
+                          <p><strong>Sinopsis:</strong> {this.state.pelicula.overview}</p>
+                          {this.state.favorito === false ? (
+                              <button onClick={()=> this.agregarFavorita(this.state.pelicula.id)}>Agregar a Favoritos</button>
+                          ) : (
+                              <button onClick={()=> this.sacarDeFavorita(this.state.pelicula.id)}>Quitar de Favoritos</button>
+                          )}
+                      </div>
+                  </article>
+              )}
+          </section>
+      )
+  }
+  
     
 }
 
