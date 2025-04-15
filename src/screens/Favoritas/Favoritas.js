@@ -24,7 +24,7 @@ class Favoritas extends Component{
                   };
                 //No entra en el oral
                 Promise.all(
-                favoritasParseado.map((elm)=> 
+                favoritasParseado.map((elm) => 
                     fetch(`https://api.themoviedb.org/3/movie/${elm}?language=en-US`, options)
                         .then((results) => results.json())
                         .catch((err) => console.error(err))
@@ -48,7 +48,7 @@ class Favoritas extends Component{
                 {
                     this.state.peliculasFav.length > 0 
                     ?
-                    this.state.peliculasFav.map((elm,idx) => <Pelicula data={elm} key={idx + elm.name} />)
+                    this.state.peliculasFav.map((elm,idx) => <Pelicula data={elm} key={idx + elm.title} />)
                     :
                     this.state.hayElementosEnFav === false ?
                         <h1>El Carrito esta vacio</h1>
