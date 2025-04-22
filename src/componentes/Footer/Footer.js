@@ -10,3 +10,9 @@ function Footer (){
 }
 
 export default Footer;
+
+//Teoria asociada:
+
+    //Componenete funcional: Es un bloque reutilizable, sin estado propio ni logica compleja
+
+    //HTML semantico: Usa <footer>, etiqueta pensada para mostrar contenido de pie de pagina

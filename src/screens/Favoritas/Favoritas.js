@@ -1,6 +1,13 @@
 import React, {Component} from "react";
 import Pelicula from "../../componentes/Pelicula/Pelicula";
 
+// QUE HACE ?
+
+// Al montarse, lee del localStorage los IDs de las películas favoritas.
+// Usa esos IDs para hacer múltiples fetchs en paralelo a la API de TMDb.
+// Muestra todas esas películas usando el componente Pelicula.
+// Si no hay favoritas, muestra un mensaje de “El carrito está vacío”.
+
 class Favoritas extends Component{
     constructor(props){
         super(props)
@@ -9,6 +16,8 @@ class Favoritas extends Component{
             hayElementosEnFav: false
         }
     }
+// peliculasFav: array de objetos con los datos completos de cada peli.
+// hayElementosEnFav: flag para saber si alguna vez hubo favoritos guardados (diferenciar entre "nunca hubo" y "estoy cargando").
 
     componentDidMount(){
         const storage = localStorage.getItem('favoritos')
@@ -38,6 +47,11 @@ class Favoritas extends Component{
             }
         }
     }
+// localStorage.getItem(...):	Recupera los IDs de favoritos guardados.
+// Promise.all([...]):	Ejecuta varios fetchs al mismo tiempo (uno por cada ID).
+// .map(id => fetch(...)):	Llama a la API de TMDb para cada película específica.
+// .then(data => setState(...)):	Guarda todas las respuestas en el estado.
+// catch:	Maneja errores de red o formato.
 
 
     render(){
@@ -60,6 +74,17 @@ class Favoritas extends Component{
             </>
         )
     }
+// Hay pelis favoritas:	Se renderizan con .map() usando Pelicula.
+// hayElementosEnFav === false:	Muestra "El carrito está vacío".
+// Si hay IDs pero aún no llegaron los datos:	Muestra "Cargando...".
 }
 
 export default Favoritas;
+
+// CONCEPTOS CLAVE PARA EL EXAMEN
+
+// Manejo de múltiples fetchs:	Con Promise.all, se hacen varias llamadas en paralelo.
+// Persistencia de datos:	Uso de localStorage para recordar elecciones del usuario.
+// Renderizado condicional:	Diferentes mensajes según el estado del array y flags auxiliares.
+// Reutilización:	Usa el componente Pelicula, manteniendo consistencia visual.
+// Separación de responsabilidades:	La lógica de favoritos no está en Pelicula, sino en Favoritas.js.

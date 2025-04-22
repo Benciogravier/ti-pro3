@@ -1,6 +1,13 @@
 import React, {Component} from "react";
 import './styles.css'
 
+// QUE HACE ESTA PANTALLA? 
+
+// Lee el ID de la película desde la URL (/detalle/:id).
+// Llama a la API de TMDb para obtener los datos de esa película.
+// Muestra imagen, título, rating, fecha de estreno, duración y sinopsis.
+// Permite agregar o quitar la película de favoritos usando localStorage.
+
 class Detalle extends Component {
     constructor(props) {
       super(props);
@@ -10,6 +17,9 @@ class Detalle extends Component {
         favorito: false
       };
     }
+// id:	Extraída desde la URL con match.params.
+// pelicula:	Objeto que se llena con los datos de la API.
+// favorito:	Booleano que indica si esta película ya está en localStorage.
 
   
     componentDidMount() {
@@ -29,6 +39,9 @@ class Detalle extends Component {
               this.setState ({favorito : true})
           }
       }
+// Se hace una solicitud HTTP dinámica basada en id.
+// Se usa localStorage para saber si ya es favorita.
+// componentDidMount() es ideal para fetching y setup inicial.
       
       fetch(`https://api.themoviedb.org/3/movie/${this.state.id}?language=en-US`, options)
         .then((results) => results.json())
@@ -65,6 +78,8 @@ class Detalle extends Component {
         favorito: false
       })
     }
+    // Actualiza localStorage
+    // Modifica el estado con this.setState() para que el boton se actualice automaticamente
 
     render(){
       return(
@@ -94,8 +109,21 @@ class Detalle extends Component {
           </section>
       )
   }
-  
+
+// Condicional (this.state.pelicula === null):	Muestra un mensaje si la info aún no llegó.
+// JSX dinámico:	Usa los datos de this.state.pelicula para completar el contenido.
+// Botones con estado reactivo:	El estado favorito determina qué botón mostrar.
+// URL dinámica:	Se construye con poster_path, title, etc. obtenidos de la API.
     
 }
 
 export default Detalle;
+
+//  CONCEPTOS CLAVE
+
+// Routing dinámico:	Usa match.params.id para acceder al ID desde la URL.
+// Ciclo de vida:	componentDidMount hace el fetch y chequea favoritos.
+// Persistencia:	Usa localStorage para guardar datos entre sesiones.
+// Estado derivado de props:	El ID se pasa por props, no es interno al componente.
+// Interacción condicional:	Se renderizan distintos botones según el estado.
+// Encapsulamiento:	Toda la lógica está contenida en esta Screen, no depende de otros componentes.

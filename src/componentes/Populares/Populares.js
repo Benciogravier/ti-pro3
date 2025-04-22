@@ -11,6 +11,9 @@ class Populares extends Component{
             backupPeliculas: []
         }
     }
+// peliculas: lista actual que se muestra.
+// backupPeliculas: copia original para restaurar si se filtra, ordena, etc. (típico en apps que permiten filtros en tiempo real).
+
     componentDidMount(){
         const options = {
             method: 'GET',
@@ -27,6 +30,7 @@ class Populares extends Component{
             }))
             .catch((err) => console.error(err));
     }
+    // mismo que cartelera
 
     render(){
         return(
@@ -45,8 +49,7 @@ class Populares extends Component{
     }
 
 }
-
-
+// Preparación para filtros: La presencia de backupPeliculas sugiere que puede haber lógica de filtrado (aunque no esté en este archivo).
 
 
 export default Populares;

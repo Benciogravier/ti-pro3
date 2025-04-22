@@ -1,6 +1,9 @@
 import React, { Component } from "react";
 import {Link} from 'react-router-dom';
 
+// QUE REPRESENTA? 
+    // Imagen, titulo, descripcion expandible, boton detalle, boton agregar/quitar de favoritos
+
 class Pelicula extends Component{
     constructor(props){
         super(props)
@@ -10,6 +13,11 @@ class Pelicula extends Component{
             favorito: false
         }
     }
+    // state es inmutable directamente, solo se cambi con this.setState
+    // React renderiza automaticamente cuando cambia el estado
+    // data: los datos de la pelicula(imagen, titulo, etc) que recibe por props
+    // mostrarContenido: controla si se ve o no la descripcion
+    // favorito: guarda si esa pelicula esta marcada como favorita
 
     componentDidMount(){
         let storage = localStorage.getItem("favoritos")
@@ -21,6 +29,14 @@ class Pelicula extends Component{
             }
         }
     }
+    // ciclo de vida de un componente de clase
+    // Se ejecuta una vez al montar el componente
+    // ideal para cargar datos externos, hacer inicializaciones o acceder al localStorage
+    // lee localStorage para ver si esta pelicula esta marcada como favorita
+    // si si, actualiza el estado(favorito:true)
+
+    // localStorage: permite guardar datos en el navegador que persisten entre sesiones
+    // componentDidMount() es ideal para hacer este tipo de chequeos una sola vez.
 
     agregarFavorita(id){
         let storage = localStorage.getItem('favoritos')
@@ -39,6 +55,9 @@ class Pelicula extends Component{
           favorito: true
         })
       }
+      // si ya habia favoritos, se agrega uno nuevo al array
+      // si no, se crea el array con un solo elemento
+      // se actualiza el estad oapra que React re-renderice con los botones correctos
 
       sacarDeFavorita(id){
         const storage = localStorage.getItem('favoritos')
@@ -51,12 +70,23 @@ class Pelicula extends Component{
           favorito: false
         })
       }
+      // filtra el ID actual fuera del array 
+      // guarda el nuevo array sin ese ID
+      // React re/renderiza con el nuevo estado (favorito: false)
+
+      //agregarFavorita(id) y sacarDeFavorita(id) modifican el array en localStorage y actualizan el estado para que React vuelva a renderizar
+
+      // localStorage: permite guardar datos en el navegador, persisten al recargar la app
+      // JSON.parse()/JSON.stringify(): se usan para convertir arrays/objetos entre string y objeto JS
+      // setState(): cambia el estado y fuerza a React a renderizar de nuevo. No es inmediato; React batch actualizaciones
+
 
     ocultar(){
         this.setState({
             mostrarContenido: !this.state.mostrarContenido
         })
     }
+    // alterna un valor booleano, entre mostrar y ocultar la descripcion
 
     render() {
         return(
@@ -97,7 +127,25 @@ class Pelicula extends Component{
             </div>
         )
     }
+    // <img />	Usa props (poster_path) para construir la URL del póster.
+    // {... ? ... : ...}	Renderizado condicional. Si mostrarContenido es true, se muestra. Si no, no.
+    // <Link>: Forma declarativa de navegacion. Reemplaza a <a> en React Router
+    // key={...}	Cuando se use en .map(), debe tener una key única para optimización de React.
 }
 
 
 export default Pelicula;
+
+// INTERACCION TOTAL CON EL SISTEMA
+
+//Props: Recibe info de la película desde Resultados.js, Populares.js, etc.
+
+//State: Administra si está marcada como favorita y si se muestra la descripción.
+
+//Routing: Al hacer clic en “Detalle”, se navega a /detalle/:id usando Link.
+
+//Persistencia local: Guarda favoritas usando localStorage.
+
+//Ciclo de vida: Lee del almacenamiento local al montarse.
+
+//UI dinámica: Cambia lo que se ve según los valores actuales del estado.

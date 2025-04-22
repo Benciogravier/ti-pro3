@@ -16,7 +16,7 @@ function App() {
   return (
     <>
       <Header />
-      <Switch>
+      <Switch> 
         <Route path={"/"} exact={true} component={Home}/>
         <Route path={"/detalle/:id"} component={Detalle}/>
         <Route path={"/cartelera"} component={EnCartel}/>
@@ -33,3 +33,14 @@ function App() {
 }
 
 export default App;
+
+// <Switch> = asegura de que solo una ruta se renderice a la vez
+// Cada <Route> conecta una URL con una pantalla
+  // /detalle/:id es una rruta dinamica
+  //component={Pantalla} --> le dice a React qur componente RENDERIZAR
+
+//Conceptos clave
+  //Routing: se basa en react-router-dom, permite que cada URL se mnuestre en un componente diferente
+  //Composicion: App.js actua como contenedor general
+  //Componenentes comunes: (Header, Footer) se ponen afuera del Switch para que esten siempre visibles
+  
